@@ -27,52 +27,50 @@ function SignIn() {
           <p className="pageHeader">Welcome Back!</p>
         </header>
 
-        <main>
-          <form>
+        <form>
+          <input
+            type="email"
+            placeholder="Email"
+            id="email"
+            className="emailInput"
+            value={email}
+            onChange={onChange}
+          />
+
+          <div className="passwordInputDiv">
             <input
-              type="email"
-              placeholder="Email"
-              id="email"
-              className="emailInput"
-              value={email}
+              type={showPassword ? "text" : "password"}
+              className="passwordInput"
+              placeholder="Password"
+              id="password"
+              value={password}
               onChange={onChange}
             />
 
-            <div className="passwordInputDiv">
-              <input
-                type={showPassword ? "text" : "password"}
-                className="passwordInput"
-                placeholder="Password"
-                id="password"
-                value={password}
-                onChange={onChange}
-              />
+            <img
+              src={visibilityIcon}
+              alt="show password"
+              onClick={() => setShowPassword((prevState) => !prevState)}
+              className="showPassword"
+            />
+          </div>
 
-              <img
-                src={visibilityIcon}
-                alt="show password"
-                onClick={() => setShowPassword((prevState) => !prevState)}
-                className="showPassword"
-              />
-            </div>
-
-            <Link to="/forgot-password" className="forgotPasswordLink">
-              Forgot Password
-            </Link>
-            <div className="signInBar">
-              <p className="signInText">Sign In</p>
-              <button className="signInButton">
-                <ArrowRightIcon fill="$ffffff" width="34px" height="34px" />
-              </button>
-            </div>
-          </form>
-
-          {/* Google OAuth */}
-
-          <Link to="/sign-up" classname="registerLink">
-            Sing Up Instead
+          <Link to="/forgot-password" className="forgotPasswordLink">
+            Forgot Password
           </Link>
-        </main>
+          <div className="signInBar">
+            <p className="signInText">Sign In</p>
+            <button className="signInButton">
+              <ArrowRightIcon fill="#ffffff" width="34px" height="34px" />
+            </button>
+          </div>
+        </form>
+
+        {/* Google OAuth */}
+
+        <Link to="/sign-up" className="registerLink">
+          Sing Up Instead
+        </Link>
       </div>
     </>
   );
