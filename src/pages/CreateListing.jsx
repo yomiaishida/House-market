@@ -109,165 +109,185 @@ const CreateListing = () => {
             required
             className="formInputName"
           />
-        </form>
 
-        <div className="formRooms flex">
-          <div>
-            <label className="formLabel">Bedrooms</label>
-            <input
-              type="number"
-              id="bedrooms"
-              value={bedrooms}
-              onChange={onMutate}
-              min="1"
-              max="50"
-              required
-              className="formInputSmall"
-            />
-          </div>
-          <div>
-            <label className="formLabel">Bathrooms</label>
-            <input
-              type="number"
-              id="bathrooms"
-              value={bathrooms}
-              onChange={onMutate}
-              min="1"
-              max="50"
-              required
-              className="formInputSmall"
-            />
-          </div>
-        </div>
-
-        <label className="formLabel">Parking spot</label>
-        <div className="formButtons">
-          <button
-            type="button"
-            id="parking"
-            value={true}
-            onChange={onMutate}
-            min="1"
-            max="50"
-            className={parking ? "formButtonActive" : "formButton"}
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            id="parking"
-            value={false}
-            onChange={onMutate}
-            className={
-              !parking && parking !== null ? "formButtonActive" : "formButton"
-            }
-          >
-            No
-          </button>
-        </div>
-
-        <label className="formLabel">Furnished</label>
-        <div className="formButtons">
-          <button
-            type="button"
-            id="furnished"
-            value={true}
-            onChange={onMutate}
-            className={furnished ? "formButtonActive" : "formButton"}
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            id="furnished"
-            value={false}
-            onChange={onMutate}
-            className={
-              !furnished && furnished !== null
-                ? "formButtonActive"
-                : "formButton"
-            }
-          >
-            No
-          </button>
-        </div>
-
-        <label className="formLabel">Address</label>
-        <textarea
-          id="address"
-          type="text"
-          value={address}
-          onChange={onMutate}
-          required
-        ></textarea>
-
-        {!geolocationEnabled && (
-          <div className="formLatLng flex">
+          <div className="formRooms flex">
             <div>
-              <label className="formLabel">Latitude</label>
+              <label className="formLabel">Bedrooms</label>
               <input
                 type="number"
-                value={latitude}
+                id="bedrooms"
+                value={bedrooms}
                 onChange={onMutate}
+                min="1"
+                max="50"
                 required
-                id="latitude  "
+                className="formInputSmall"
+              />
+            </div>
+            <div>
+              <label className="formLabel">Bathrooms</label>
+              <input
+                type="number"
+                id="bathrooms"
+                value={bathrooms}
+                onChange={onMutate}
+                min="1"
+                max="50"
+                required
                 className="formInputSmall"
               />
             </div>
           </div>
-        )}
 
-        <label className="formLabel">Offers</label>
-        <div className="formButtons">
-          <button
-            type="button"
-            id="offer"
-            value={true}
-            onChange={onMutate}
-            className={offer ? "formButtonActive" : "formButton"}
-          >
-            Yes
-          </button>
-          <button
-            type="button"
-            id="offer"
-            value={false}
-            onChange={onMutate}
-            className={
-              !offer && offer !== null ? "formButtonActive" : "formButton"
-            }
-          >
-            No
-          </button>
-        </div>
+          <label className="formLabel">Parking spot</label>
+          <div className="formButtons">
+            <button
+              type="button"
+              id="parking"
+              value={true}
+              onChange={onMutate}
+              min="1"
+              max="50"
+              className={parking ? "formButtonActive" : "formButton"}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              id="parking"
+              value={false}
+              onChange={onMutate}
+              className={
+                !parking && parking !== null ? "formButtonActive" : "formButton"
+              }
+            >
+              No
+            </button>
+          </div>
 
-        <label className="formLabel">Regular Price</label>
-        <div className="formPriceDiv">
-          <input
-            type="number"
-            value={regularPrice}
+          <label className="formLabel">Furnished</label>
+          <div className="formButtons">
+            <button
+              type="button"
+              id="furnished"
+              value={true}
+              onChange={onMutate}
+              className={furnished ? "formButtonActive" : "formButton"}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              id="furnished"
+              value={false}
+              onChange={onMutate}
+              className={
+                !furnished && furnished !== null
+                  ? "formButtonActive"
+                  : "formButton"
+              }
+            >
+              No
+            </button>
+          </div>
+
+          <label className="formLabel">Address</label>
+          <textarea
+            id="address"
+            type="text"
+            value={address}
             onChange={onMutate}
-            min="50"
-            max="750000000"
             required
-            className="formInputSmall"
-          />
-          {type === "rent" && <p className="fromPriceText">$/ Month</p>}
-        </div>
+          ></textarea>
 
-        {offer && (
-          <>
-            <label className="formLabel">Discounted Price</label>
+          {!geolocationEnabled && (
+            <div className="formLatLng flex">
+              <div>
+                <label className="formLabel">Latitude</label>
+                <input
+                  type="number"
+                  value={latitude}
+                  onChange={onMutate}
+                  required
+                  id="latitude  "
+                  className="formInputSmall"
+                />
+              </div>
+            </div>
+          )}
+
+          <label className="formLabel">Offers</label>
+          <div className="formButtons">
+            <button
+              type="button"
+              id="offer"
+              value={true}
+              onChange={onMutate}
+              className={offer ? "formButtonActive" : "formButton"}
+            >
+              Yes
+            </button>
+            <button
+              type="button"
+              id="offer"
+              value={false}
+              onChange={onMutate}
+              className={
+                !offer && offer !== null ? "formButtonActive" : "formButton"
+              }
+            >
+              No
+            </button>
+          </div>
+
+          <label className="formLabel">Regular Price</label>
+          <div className="formPriceDiv">
             <input
               type="number"
-              id="discountedPrice"
-              className="formInputSmall"
-              value={discountedPrice}
+              value={regularPrice}
               onChange={onMutate}
-              min=""
+              min="50"
+              max="750000000"
+              required
+              className="formInputSmall"
             />
-          </>
-        )}
+            {type === "rent" && <p className="fromPriceText">$/ Month</p>}
+          </div>
+
+          {offer && (
+            <>
+              <label className="formLabel">Discounted Price</label>
+              <input
+                type="number"
+                id="discountedPrice"
+                className="formInputSmall"
+                value={discountedPrice}
+                onChange={onMutate}
+                min="50"
+                max="750000000"
+                required
+              />
+            </>
+          )}
+
+          <label className="formLabel">Images</label>
+          <p className="imagesInfo">
+            The firs image will be the cover (max 6).
+          </p>
+          <input
+            type="file"
+            id="images"
+            className="formInputFile"
+            onChange={onMutate}
+            max="6"
+            accept=".jpg,.png,.jpeg"
+            multiple
+            required
+          />
+          <button className="primaryButton createListingButton" type="submit">
+            Create Listing
+          </button>
+        </form>
       </main>
     </div>
   );
