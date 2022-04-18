@@ -13,6 +13,7 @@ function Navbar() {
       return true;
     }
   };
+
   return (
     <footer className="navbar">
       <nav className="navbarNav">
@@ -21,13 +22,13 @@ function Navbar() {
             <ExploreIcon
               fill={pathMatchRoute("/") ? "#2c2c2c" : "#8f8f8f"}
               width="36px"
-              height="36"
+              height="36px"
             />
             <p
               className={
                 pathMatchRoute("/")
                   ? "navbarListItemNameActive"
-                  : "navbarListName"
+                  : "navbarListItemName"
               }
             >
               Explore
@@ -41,9 +42,9 @@ function Navbar() {
             />
             <p
               className={
-                pathMatchRoute("/offers")
+                pathMatchRoute("/offer")
                   ? "navbarListItemNameActive"
-                  : "navbarListName"
+                  : "navbarListItemName"
               }
             >
               Offers
@@ -59,7 +60,7 @@ function Navbar() {
               className={
                 pathMatchRoute("/profile")
                   ? "navbarListItemNameActive"
-                  : "navbarListName"
+                  : "navbarListItemName"
               }
             >
               Profile
