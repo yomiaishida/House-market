@@ -1,9 +1,8 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { getAuth, updateProfile } from "firebase/auth";
 import { updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebase.config";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import arrowRight from "../assets/svg/keyboardArrowRightIcon.svg";
 import homeIcon from "../assets/svg/homeIcon.svg";
@@ -11,7 +10,7 @@ import homeIcon from "../assets/svg/homeIcon.svg";
 function Profile() {
   const auth = getAuth();
   const [changeDetails, setChangeDetails] = useState(false);
-  const [formData, setformData] = useState({
+  const [formData, setFormData] = useState({
     name: auth.currentUser.displayName,
     email: auth.currentUser.email,
   });
@@ -40,12 +39,13 @@ function Profile() {
         });
       }
     } catch (error) {
-      toast.error("Could not update profile details ");
+      console.log(error);
+      toast.error("Could not update profile details");
     }
   };
 
   const onChange = (e) => {
-    setformData((prevState) => ({
+    setFormData((prevState) => ({
       ...prevState,
       [e.target.id]: e.target.value,
     }));
@@ -55,7 +55,7 @@ function Profile() {
     <div className="profile">
       <header className="profileHeader">
         <p className="pageHeader">My Profile</p>
-        <button className="logOut" onClick={onLogout}>
+        <button type="button" className="logOut" onClick={onLogout}>
           Logout
         </button>
       </header>
