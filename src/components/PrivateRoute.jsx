@@ -3,7 +3,7 @@ import { useAuthStatus } from "../hooks/useAuthStatus";
 import Spinner from "./Spinner";
 
 const PrivateRoute = () => {
-  const { loggedIn, checkingStatus } = useAuthStatus;
+  const { loggedIn, checkingStatus } = useAuthStatus();
 
   if (checkingStatus) {
     return <Spinner />;
