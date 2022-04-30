@@ -5,7 +5,7 @@ import Spinner from "../components/Spinner";
 
 const CreateListing = () => {
   const [geolocationEnabled, setgeolocationEnabled] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     type: "rent",
     name: "",
@@ -106,9 +106,9 @@ const CreateListing = () => {
           <div className="formButtons">
             <button
               type="button"
-              className={type === "rent" ? "formButtonActive" : "formButton"}
+              className={type === "sale" ? "formButtonActive" : "formButton"}
               id="type"
-              value="rent"
+              value="sale"
               onClick={onMutate}
             >
               Sell
@@ -124,8 +124,9 @@ const CreateListing = () => {
             </button>
           </div>
 
-          <label className="fromLabel">Name</label>
+          <label className="formLabel">Name</label>
           <input
+            className="formInputName"
             type="text"
             id="name"
             value={name}
@@ -133,13 +134,13 @@ const CreateListing = () => {
             maxLength="32"
             minLength="10"
             required
-            className="formInputName"
           />
 
           <div className="formRooms flex">
             <div>
               <label className="formLabel">Bedrooms</label>
               <input
+                className="formInputSmall"
                 type="number"
                 id="bedrooms"
                 value={bedrooms}
@@ -147,12 +148,12 @@ const CreateListing = () => {
                 min="1"
                 max="50"
                 required
-                className="formInputSmall"
               />
             </div>
             <div>
               <label className="formLabel">Bathrooms</label>
               <input
+                className="formInputSmall"
                 type="number"
                 id="bathrooms"
                 value={bathrooms}
@@ -160,7 +161,6 @@ const CreateListing = () => {
                 min="1"
                 max="50"
                 required
-                className="formInputSmall"
               />
             </div>
           </div>
@@ -168,24 +168,24 @@ const CreateListing = () => {
           <label className="formLabel">Parking spot</label>
           <div className="formButtons">
             <button
+              className={parking ? "formButtonActive" : "formButton"}
               type="button"
               id="parking"
               value={true}
-              onChange={onMutate}
+              onClick={onMutate}
               min="1"
               max="50"
-              className={parking ? "formButtonActive" : "formButton"}
             >
               Yes
             </button>
             <button
-              type="button"
-              id="parking"
-              value={false}
-              onChange={onMutate}
               className={
                 !parking && parking !== null ? "formButtonActive" : "formButton"
               }
+              type="button"
+              id="parking"
+              value={false}
+              onClick={onMutate}
             >
               No
             </button>
@@ -194,24 +194,24 @@ const CreateListing = () => {
           <label className="formLabel">Furnished</label>
           <div className="formButtons">
             <button
+              className={furnished ? "formButtonActive" : "formButton"}
               type="button"
               id="furnished"
               value={true}
-              onChange={onMutate}
-              className={furnished ? "formButtonActive" : "formButton"}
+              onClick={onMutate}
             >
               Yes
             </button>
             <button
-              type="button"
-              id="furnished"
-              value={false}
-              onChange={onMutate}
               className={
                 !furnished && furnished !== null
                   ? "formButtonActive"
                   : "formButton"
               }
+              type="button"
+              id="furnished"
+              value={false}
+              onClick={onMutate}
             >
               No
             </button>
@@ -219,48 +219,60 @@ const CreateListing = () => {
 
           <label className="formLabel">Address</label>
           <textarea
-            id="address"
+            className="formInputAddress"
             type="text"
+            id="address"
             value={address}
             onChange={onMutate}
             required
-          ></textarea>
+          />
 
           {!geolocationEnabled && (
             <div className="formLatLng flex">
               <div>
                 <label className="formLabel">Latitude</label>
                 <input
+                  className="formInputSmall"
                   type="number"
+                  id="latitude"
                   value={latitude}
                   onChange={onMutate}
                   required
-                  id="latitude  "
+                />
+              </div>
+              <div>
+                <label className="formLabel">Longitude</label>
+                <input
                   className="formInputSmall"
+                  type="number"
+                  id="longitude"
+                  value={longitude}
+                  onChange={onMutate}
+                  required
                 />
               </div>
             </div>
           )}
 
-          <label className="formLabel">Offers</label>
+          <label className="formLabel">Offer</label>
           <div className="formButtons">
             <button
+              className={offer ? "formButtonActive" : "formButton"}
               type="button"
               id="offer"
               value={true}
-              onChange={onMutate}
-              className={offer ? "formButtonActive" : "formButton"}
+              onClick={onMutate}
             >
               Yes
             </button>
             <button
-              type="button"
-              id="offer"
-              value={false}
-              onChange={onMutate}
               className={
                 !offer && offer !== null ? "formButtonActive" : "formButton"
               }
+              type="button"
+              id="offer"
+              value={false}
+              onClick={onMutate}
             >
               No
             </button>
@@ -269,48 +281,49 @@ const CreateListing = () => {
           <label className="formLabel">Regular Price</label>
           <div className="formPriceDiv">
             <input
+              className="formInputSmall"
               type="number"
+              id="regularPrice"
               value={regularPrice}
               onChange={onMutate}
               min="50"
               max="750000000"
               required
-              className="formInputSmall"
             />
-            {type === "rent" && <p className="fromPriceText">$/ Month</p>}
+            {type === "rent" && <p className="formPriceText">$ / Month</p>}
           </div>
 
           {offer && (
             <>
               <label className="formLabel">Discounted Price</label>
               <input
+                className="formInputSmall"
                 type="number"
                 id="discountedPrice"
-                className="formInputSmall"
                 value={discountedPrice}
                 onChange={onMutate}
                 min="50"
                 max="750000000"
-                required
+                required={offer}
               />
             </>
           )}
 
           <label className="formLabel">Images</label>
           <p className="imagesInfo">
-            The firs image will be the cover (max 6).
+            The first image will be the cover (max 6).
           </p>
           <input
+            className="formInputFile"
             type="file"
             id="images"
-            className="formInputFile"
             onChange={onMutate}
             max="6"
             accept=".jpg,.png,.jpeg"
             multiple
             required
           />
-          <button className="primaryButton createListingButton" type="submit">
+          <button type="submit" className="primaryButton createListingButton">
             Create Listing
           </button>
         </form>
