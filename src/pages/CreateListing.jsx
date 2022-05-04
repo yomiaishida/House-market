@@ -68,6 +68,7 @@ const CreateListing = () => {
     if (discountedPrice >= regularPrice) {
       setLoading(false);
       toast.error("Discounted price needs to be less than regular price");
+      return;
     }
 
     if (images.length > 6) {
@@ -94,7 +95,7 @@ const CreateListing = () => {
           ? undefined
           : data.results[0]?.formatted_address;
 
-      if (location === undefined || location.uncludes("undefined")) {
+      if (location === undefined || location.includes("undefined")) {
         setLoading(false);
         toast.error("Please enter a correct address");
         return;
