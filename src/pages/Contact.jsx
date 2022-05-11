@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 function Contact() {
   const [message, setMessage] = useState("");
   const [landlord, setLandlord] = useState(null);
+  // eslint-disable-next-line
   const [searchParams, setSearchParams] = useSearchParams();
 
   const params = useParams();
@@ -26,7 +27,7 @@ function Contact() {
     getLandlord();
   }, [params.landlordId]);
 
-  const onChange = (e) => setMessage(e.targe.value);
+  const onChange = (e) => setMessage(e.target.value);
 
   return (
     <div className="pageContainer">
@@ -48,7 +49,7 @@ function Contact() {
               <textarea
                 name="message"
                 id="message"
-                className="textarea"
+                className=""
                 value={message}
                 onChange={onChange}
               ></textarea>
@@ -59,7 +60,7 @@ function Contact() {
                 "listingName"
               )}&body=${message}`}
             >
-              <button className="primaryButton" type="button">
+              <button type="button" className="primaryButton">
                 Send Message
               </button>
             </a>
