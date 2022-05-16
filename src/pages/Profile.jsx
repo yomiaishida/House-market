@@ -162,9 +162,7 @@ function Profile() {
                   key={listing.id}
                   listing={listing.data}
                   id={listing.id}
-                  onDelete={() => {
-                    listing.id;
-                  }}
+                  onDelete={() => onDelete(listing.id)}
                 />
               ))}
             </ul>
