@@ -16,7 +16,7 @@ import ListingItem from "../components/ListingItem";
 function Offers() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [lastFetchedListing, setlastFetchedListing] = useState(null);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null);
 
   useEffect(() => {
     const fetchListings = async () => {
@@ -35,8 +35,8 @@ function Offers() {
         // Execute query
         const querySnap = await getDocs(q);
 
-        const lastVisible = querySnap.docs(querySnap.docs.length - 1);
-        setlastFetchedListing(lastVisible);
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastVisible);
 
         const listings = [];
 
@@ -74,8 +74,8 @@ function Offers() {
       // Execute query
       const querySnap = await getDocs(q);
 
-      const lastVisible = querySnap.docs(querySnap.docs.length - 1);
-      setlastFetchedListing(lastVisible);
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+      setLastFetchedListing(lastVisible);
 
       const listings = [];
 
