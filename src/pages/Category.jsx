@@ -17,14 +17,14 @@ import ListingItem from "../components/ListingItem";
 function Category() {
   const [listings, setListings] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [lastFetchedListing, setlastFetchedListing] = useState(null);
+  const [lastFetchedListing, setLastFetchedListing] = useState(null);
 
   const params = useParams();
 
   useEffect(() => {
     const fetchListings = async () => {
       try {
-        // Get a reference
+        // Get reference
         const listingsRef = collection(db, "listings");
 
         // Create a query
@@ -38,8 +38,8 @@ function Category() {
         // Execute query
         const querySnap = await getDocs(q);
 
-        const lastVisible = querySnap.docs(querySnap.docs.length - 1);
-        setlastFetchedListing(lastVisible);
+        const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+        setLastFetchedListing(lastVisible);
 
         const listings = [];
 
@@ -53,7 +53,7 @@ function Category() {
         setListings(listings);
         setLoading(false);
       } catch (error) {
-        toast.error("Could not fetch the listings");
+        toast.error("Could not fetch listings");
       }
     };
 
@@ -63,7 +63,7 @@ function Category() {
   // Pagination / Load More
   const onFetchMoreListings = async () => {
     try {
-      // Get a reference
+      // Get reference
       const listingsRef = collection(db, "listings");
 
       // Create a query
@@ -78,8 +78,8 @@ function Category() {
       // Execute query
       const querySnap = await getDocs(q);
 
-      const lastVisible = querySnap.docs(querySnap.docs.length - 1);
-      setlastFetchedListing(lastVisible);
+      const lastVisible = querySnap.docs[querySnap.docs.length - 1];
+      setLastFetchedListing(lastVisible);
 
       const listings = [];
 
@@ -93,7 +93,7 @@ function Category() {
       setListings((prevState) => [...prevState, ...listings]);
       setLoading(false);
     } catch (error) {
-      toast.error("Could not fetch the listings");
+      toast.error("Could not fetch listings");
     }
   };
 
