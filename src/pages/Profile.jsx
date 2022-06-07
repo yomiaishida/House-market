@@ -37,7 +37,7 @@ function Profile() {
 
       const q = query(
         listingsRef,
-        where("userRef", "===", auth.currentUser.uid),
+        where("userRef", "==", auth.currentUser.uid),
         orderBy("timestamp", "desc")
       );
 
@@ -102,9 +102,7 @@ function Profile() {
     }
   };
 
-  const onEdit = (listingId) => {
-    navigate(`/edit-listing/${listingId}`);
-  };
+  const onEdit = (listingId) => navigate(`/edit-listing/${listingId}`);
 
   return (
     <div className="profile">
