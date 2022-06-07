@@ -69,7 +69,7 @@ const EditListing = () => {
     const fetchListing = async () => {
       const docRef = doc(db, "listings", params.listingId);
       const docSnap = await getDoc(docRef);
-      if (docSnap.esict) {
+      if (docSnap.exists()) {
         setListing(docSnap.data());
         setFormData({ ...docSnap.data(), address: docSnap.data().location });
         setLoading(false);
