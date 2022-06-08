@@ -49,7 +49,7 @@ function Contact() {
               <textarea
                 name="message"
                 id="message"
-                className=""
+                className="textarea"
                 value={message}
                 onChange={onChange}
               ></textarea>

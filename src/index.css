@@ -93,6 +93,12 @@ button {
 .explore {
   margin: 1rem;
 }
+
+@media (max-width: 1200px) {
+  div .pageContainer, .explore {
+     height: 800px;
+  }
+}
 @media (min-width: 1024px) {
   .pageContainer,
   .offers,
