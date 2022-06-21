@@ -8,12 +8,12 @@ import Offers from "./pages/Offers";
 import Profile from "./pages/Profile";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
-import ForgotPassword from "./pages/ForgotPassword";
 import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
 import Listing from "./pages/Listing";
 import Contact from "./pages/Contact";
 import EditListing from "./pages/EditListing";
+import ForgotPassword from "./pages/ForgotPassword";
 
 function App() {
   return (
